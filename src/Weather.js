@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
+import { ThreeDots } from "react-loader-spinner";
 
 import axios from "axios";
 import "./Weather.css";
@@ -17,7 +18,7 @@ export default function Weather(props) {
       description: response.data.condition.description,
       wind: response.data.wind.speed,
       humidity: response.data.temperature.humidity,
-      icon: response.data.condition.icon_url,
+      icon: response.data.condition.icon,
     });
   }
   function search() {
@@ -63,6 +64,17 @@ export default function Weather(props) {
     );
   } else {
     search();
-    return "Loading...";
+    return (
+      <ThreeDots
+        height="80"
+        width="80"
+        radius="9"
+        color="#1e1e1e"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+      />
+    );
   }
 }
