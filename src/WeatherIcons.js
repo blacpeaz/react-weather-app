@@ -31,6 +31,4 @@ export default function WeatherIcons(props) {
       animate={true}
     />
   );
-
-  // ("http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-night.png");
 }

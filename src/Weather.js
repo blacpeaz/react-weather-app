@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
-import { ThreeDots } from "react-loader-spinner";
+import { Vortex } from "react-loader-spinner";
 
 import axios from "axios";
 import "./Weather.css";
@@ -10,6 +10,7 @@ export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
+    console.log(response.data);
     setWeatherData({
       loaded: true,
       temperature: response.data.temperature.current,
@@ -65,15 +66,14 @@ export default function Weather(props) {
   } else {
     search();
     return (
-      <ThreeDots
+      <Vortex
+        visible={true}
         height="80"
         width="80"
-        radius="9"
-        color="#1e1e1e"
-        ariaLabel="three-dots-loading"
+        ariaLabel="vortex-loading"
         wrapperStyle={{}}
-        wrapperClassName=""
-        visible={true}
+        wrapperClass="vortex-wrapper"
+        colors={["red", "green", "blue", "yellow", "orange", "purple"]}
       />
     );
   }
